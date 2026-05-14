@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog — Global Translations Panama</title>
+  <meta name="description" content="Insights on translation, interpretation, and language services from Global Translations Panama."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0d2b4e;
+      --gold: #c9933a;
+      --gold-light: #e8b95a;
+      --white: #ffffff;
+      --offwhite: #f7f5f0;
+      --gray: #6b7280;
+      --light-gray: #e5e7eb;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a2e; background: var(--white); }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon { width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .nav-logo-text { color: var(--white); font-family: 'Playfair Display', serif; font-size: 1.1rem; line-height: 1.2; }
+    .nav-logo-sub { color: var(--gold-light); display: block; font-size: 0.7rem; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+    .nav-cta { background: var(--gold); color: var(--white) !important; padding: 9px 20px; border-radius: 4px; font-weight: 600 !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* HERO */
+    .blog-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a4a7a 50%, #0d3560 100%);
+      padding: 80px 5% 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9933a' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .blog-hero-badge { display: inline-block; background: rgba(201,147,58,0.2); border: 1px solid var(--gold); color: var(--gold-light); font-size: 0.75rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 6px 18px; border-radius: 20px; margin-bottom: 20px; position: relative; }
+    .blog-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--white); line-height: 1.15; margin-bottom: 16px; position: relative; }
+    .blog-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .blog-hero p { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 520px; margin: 0 auto; line-height: 1.8; position: relative; }
+
+    /* FILTER BAR */
+    .filter-bar {
+      background: var(--offwhite);
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .filter-label { font-size: 0.8rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-right: 4px; }
+    .filter-btn { padding: 7px 18px; border-radius: 20px; border: 1px solid var(--light-gray); background: var(--white); color: var(--gray); font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+    .filter-btn:hover, .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .filter-btn.active { background: var(--gold); border-color: var(--gold); }
+
+    /* MAIN GRID */
+    .blog-main { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; }
+
+    /* FEATURED POST */
+    .featured-post {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(13,43,78,0.1);
+      border: 1px solid var(--light-gray);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .featured-post:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(13,43,78,0.15); }
+    .featured-img {
+      background: linear-gradient(135deg, var(--navy), #1a4a7a);
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-img::after { content: ''; position: absolute; inset: 0; background: rgba(13,43,78,0.2); }
+    .featured-content { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+    .post-category { display: inline-block; background: rgba(201,147,58,0.12); color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(201,147,58,0.3); width: fit-content; }
+    .featured-badge { background: var(--gold); color: var(--white); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; width: fit-content; }
+    .featured-content h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); line-height: 1.3; }
+    .featured-content p { color: var(--gray); font-size: 0.97rem; line-height: 1.8; }
+    .post-meta { display: flex; align-items: center; gap: 16px; font-size: 0.8rem; color: var(--gray); margin-top: 4px; }
+    .post-meta span { display: flex; align-items: center; gap: 5px; }
+    .read-more { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); font-weight: 600; font-size: 0.9rem; text-decoration: none; margin-top: 8px; transition: gap 0.2s; }
+    .read-more:hover { gap: 12px; }
+
+    /* REGULAR CARDS */
+    .post-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(13,43,78,0.07);
+      border: 1px solid var(--light-gray);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      border-top: 3px solid var(--gold);
+    }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(13,43,78,0.13); }
+    .post-card-img {
+      height: 180px;
+      background: linear-gradient(135deg, var(--navy), #1a4a7a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .post-card-body { padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .post-card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--navy); line-height: 1.35; }
+    .post-card-body p { color: var(--gray); font-size: 0.9rem; line-height: 1.75; flex: 1; }
+
+    /* SECTION LABEL */
+    .section-label { color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--navy); margin-bottom: 40px; }
+
+    /* NEWSLETTER */
+    .newsletter {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a4a7a 100%);
+      padding: 70px 5%;
+      text-align: center;
+    }
+    .newsletter h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 12px; }
+    .newsletter p { color: rgba(255,255,255,0.75); margin-bottom: 32px; font-size: 1rem; }
+    .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input { flex: 1; min-width: 220px; padding: 13px 20px; border-radius: 4px; border: none; font-family: 'Inter', sans-serif; font-size: 0.95rem; outline: none; }
+    .newsletter-form button { background: var(--gold); color: var(--white); border: none; padding: 13px 28px; border-radius: 4px; font-weight: 600; font-size: 0.95rem; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; }
+    .newsletter-form button:hover { background: var(--gold-light); }
+
+    /* FOOTER */
+    footer {
+      background: #081d35;
+      padding: 30px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+    footer a { color: var(--gold-light); text-decoration: none; font-size: 0.85rem; }
+    footer a:hover { color: var(--white); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .featured-post { grid-template-columns: 1fr; }
+      .featured-img { min-height: 200px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://www.globaltranslationspanama.com" class="nav-logo">
+    <div class="nav-logo-icon">🌐</div>
+    <div>
+      <div class="nav-logo-text">Global Translations Panama</div>
+      <span class="nav-logo-sub">Inc.</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://www.globaltranslationspanama.com">Home</a></li>
+    <li><a href="https://www.globaltranslationspanama.com/#services">Services</a></li>
+    <li><a href="https://www.globaltranslationspanama.com/#why">About</a></li>
+    <li><a href="index.html" class="active">Blog</a></li>
+    <li><a href="https://www.globaltranslationspanama.com/#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div class="blog-hero-badge">Our Blog</div>
+  <h1>Language, Culture &amp; <em>Translation</em></h1>
+  <p>Insights, tips, and news from Panama's trusted language professionals.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Topics:</span>
+  <button class="filter-btn active" onclick="filterPosts('all', this)">All</button>
+  <button class="filter-btn" onclick="filterPosts('translation', this)">Translation</button>
+  <button class="filter-btn" onclick="filterPosts('interpretation', this)">Interpretation</button>
+  <button class="filter-btn" onclick="filterPosts('legal', this)">Legal &amp; Certified</button>
+  <button class="filter-btn" onclick="filterPosts('tips', this)">Tips &amp; Guides</button>
+  <button class="filter-btn" onclick="filterPosts('panama', this)">Panama</button>
+</div>
+
+<!-- BLOG GRID -->
+<div class="blog-main">
+
+  <div class="blog-grid" id="blog-grid">
+
+    <!-- FEATURED POST -->
+    <a href="articles/what-is-certified-translation.html" class="featured-post" data-category="legal translation">
+      <div class="featured-img">📄</div>
+      <div class="featured-content">
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <span class="featured-badge">✦ Featured</span>
+          <span class="post-category">Legal &amp; Certified</span>
+        </div>
+        <h2>What Is a Certified Translation and When Do You Need One?</h2>
+        <p>Certified translations are required for official documents submitted to government agencies, courts, universities, and embassies. Learn exactly what makes a translation "certified" and why it matters in Panama and abroad.</p>
+        <div class="post-meta">
+          <span>✦ Ricardo Eva Magdaleno</span>
+          <span>📅 May 2025</span>
+          <span>⏱ 5 min read</span>
+        </div>
+        <span class="read-more">Read Article →</span>
+      </div>
+    </a>
+
+    <!-- POST 2 -->
+    <a href="articles/consecutive-vs-simultaneous.html" class="post-card" data-category="interpretation">
+      <div class="post-card-img">🎙️</div>
+      <div class="post-card-body">
+        <span class="post-category">Interpretation</span>
+        <h3>Consecutive vs. Simultaneous Interpretation: What's the Difference?</h3>
+        <p>From boardroom meetings to Zoom calls, knowing which type of interpretation fits your event can make all the difference in clarity and flow.</p>
+        <div class="post-meta">
+          <span>📅 April 2025</span>
+          <span>⏱ 4 min read</span>
+        </div>
+        <span class="read-more">Read Article →</span>
+      </div>
+    </a>
+
+    <!-- POST 3 -->
+    <a href="articles/translate-documents-for-panama.html" class="post-card" data-category="legal panama">
+      <div class="post-card-img">🇵🇦</div>
+      <div class="post-card-body">
+        <span class="post-category">Panama</span>
+        <h3>How to Translate Documents for Official Use in Panama</h3>
+        <p>Apostilles, notarizations, sworn translations — navigating Panama's official document requirements doesn't have to be confusing. Here's a clear guide.</p>
+        <div class="post-meta">
+          <span>📅 March 2025</span>
+          <span>⏱ 6 min read</span>
+        </div>
+        <span class="read-more">Read Article →</span>
+      </div>
+    </a>
+
+    <!-- POST 4 -->
+    <a href="articles/tips-for-working-with-interpreter.html" class="post-card" data-category="tips interpretation">
+      <div class="post-card-img">💡</div>
+      <div class="post-card-body">
+        <span class="post-category">Tips &amp; Guides</span>
+        <h3>5 Tips for Working Effectively With an Interpreter</h3>
+        <p>Getting the most out of your interpreter means more than just having them in the room. These practical tips ensure smooth, accurate communication every time.</p>
+        <div class="post-meta">
+          <span>📅 February 2025</span>
+          <span>⏱ 3 min read</span>
+        </div>
+        <span class="read-more">Read Article →</span>
+      </div>
+    </a>
+
+    <!-- POST 5 -->
+    <a href="articles/medical-translation-accuracy.html" class="post-card" data-category="translation tips">
+      <div class="post-card-img">🏥</div>
+      <div class="post-card-body">
+        <span class="post-category">Translation</span>
+        <h3>Why Accuracy in Medical Translation Can Be Life-Saving</h3>
+        <p>Medical translations carry a level of responsibility unlike any other. A single mistranslated term can have serious consequences. Here's why precision matters most.</p>
+        <div class="post-meta">
+          <span>📅 January 2025</span>
+          <span>⏱ 5 min read</span>
+        </div>
+        <span class="read-more">Read Article →</span>
+      </div>
+    </a>
+
+    <!-- POST 6 -->
+    <a href="articles/corporate-translation-panama.html" class="post-card" data-category="translation panama">
+      <div class="post-card-img">🏢</div>
+      <div class="post-card-body">
+        <span class="post-category">Translation</span>
+        <h3>Corporate Translation Services in Panama: What Businesses Need to Know</h3>
+        <p>From contracts to financial reports, multinational companies operating in Panama need reliable translation partners who understand both language and local regulations.</p>
+        <div class="post-meta">
+          <span>📅 December 2024</span>
+          <span>⏱ 4 min read</span>
+        </div>
+        <span class="read-more">Read Article →</span>
+      </div>
+    </a>
+
+  </div><!-- /blog-grid -->
+</div><!-- /blog-main -->
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="section-label">Stay Informed</div>
+  <h2>Get Language Insights in Your Inbox</h2>
+  <p>Subscribe for articles on translation, interpretation, and language tips — no spam, ever.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Your email address"/>
+    <button type="button">Subscribe</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Global Translations Panama, Inc. · La Chorrera, West Panama, Republic of Panama</p>
+  <a href="https://www.globaltranslationspanama.com">← Back to Main Site</a>
+</footer>
+
+<script>
+  function filterPosts(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.post-card, .featured-post').forEach(card => {
+      const cats = card.dataset.category || '';
+      card.style.display = (category === 'all' || cats.includes(category)) ? '' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
